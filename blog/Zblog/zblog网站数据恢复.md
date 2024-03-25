@@ -1,14 +1,12 @@
 ---
 slug: zblog-shuju-huifu
-title: zblog网站数据恢复
+title: Zblog网站数据恢复
 date: 2023-12-18
 authors: kuizuo
-tags: [zblog]
-keywords: [zblog]
+tags: [Zblog]
+keywords: [Zblog]
 description: 记录 git 操作失误导致代码丢失与找回的过程
 ---
-
-
 ---
 
 #### 第一：
