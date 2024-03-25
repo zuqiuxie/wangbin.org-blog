@@ -1,13 +1,12 @@
 ---
 slug: vercel-deploy-serverless
-title: Vercel部署Serverless
-date: 2022-05-12
+title: DokuWiki数据备份和迁移
+date: 2023-12-12
 authors: kuizuo
-tags: [vercel, serverless]
-keywords: [vercel, serverless]
+tags: [DokuWiki]
+keywords: [DokuWiki]
 description: 使用 Vercel 部署 serverless 过程记录
 ---
-
 Vercel 除了能部署静态站点外，还能运行 Serverless Functions，也是本次的主题
 
 <!-- truncate -->
@@ -18,14 +17,14 @@ Vercel 除了能部署静态站点外，还能运行 Serverless Functions，也�
 
 vercel 约定在目录下 api 下创建接口路径，这里创建 api/hello.js 文件，当然也支持 ts 以及 ESmodule 写法
 
-```javascript title='api/hello.js'
+```javascript
 export default function handler(request, response) {
   const { name } = request.query
   response.status(200).send(`Hello ${name}!`)
 }
 ```
 
-此时通过`vc --prod`生产环境部署后，在浏览器请求 vercel 提供的二级域名/api/hello?name=vercel 便可得到文本`Hello vercel`，而其函数写法与 express 类似
+此时通过 `vc --prod`生产环境部署后，在浏览器请求 vercel 提供的二级域名/api/hello?name=vercel 便可得到文本 `Hello vercel`，而其函数写法与 express 类似
 
 接口信息可以在 Functions 中查看
 
@@ -43,7 +42,7 @@ npm i -D @vercel/node
 
 将上面的 hello.js 改为 hello.ts，内容为
 
-```typescript title='api/hello.ts'
+```typescript
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 export default (request: VercelRequest, response: VercelResponse) => {
@@ -72,7 +71,7 @@ vercel dev
 
 vercel 允许响应携带自定义的协议头，例如设置允许跨域的协议头。
 
-```json title='vercel.json' icon='logos:vercel-icon'
+```json
 {
   "headers": [
     {
@@ -102,7 +101,7 @@ Vercel 支持路由重写功能，因此我们可以实现反向代理。
 
 例如将前缀为/proxy 的所有请求都代理到 ，其写法如下
 
-```json title='vercel.json' icon='logos:vercel-icon'
+```json
 {
   "rewrites": [
     {
@@ -113,7 +112,7 @@ Vercel 支持路由重写功能，因此我们可以实现反向代理。
 }
 ```
 
-请求`/proxy/hello` 将会请求到 `http://127.0.0.1:5000/hello`（不带有`/proxy`）
+请求 `/proxy/hello` 将会请求到 `http://127.0.0.1:5000/hello`（不带有 `/proxy`）
 
 :::warning 注意：无法代理前缀为 `/api` 的接口，即使设置了也无效。
 
@@ -142,7 +141,7 @@ Vercel 支持路由重写功能，因此我们可以实现反向代理。
 
 假设要部署一个 Express 项目，则配置如下
 
-```json title='vercel.json' icon='logos:vercel-icon'
+```json
 {
   "builds": [
     {
@@ -167,7 +166,7 @@ npm i @vercel/node -D
 
 其 vercel.json 如下
 
-```json title='vercel.json' icon='logos:vercel-icon'
+```json
 {
   "builds": [
     {
