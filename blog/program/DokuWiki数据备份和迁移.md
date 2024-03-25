@@ -1,5 +1,5 @@
 ---
-slug: dokuwiki-shuju-beifen-qianyi
+slug: dokuwiki-shuju-beifen
 title: DokuWiki数据备份和迁移
 date: 2023-12-12
 authors: kuizuo
