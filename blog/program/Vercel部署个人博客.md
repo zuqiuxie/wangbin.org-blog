@@ -1,10 +1,10 @@
 ---
-slug: vercel-42-kuangjia
-title: Vercel 所支持的 42 种前端框架
-date: 2023-10-11
+slug: vercel-deploy-blog
+title: Vercel部署个人博客
+date: 2022-05-11
 authors: kuizuo
-tags: [vercel]
-keywords: [vercel]
+tags: [vercel, blog]
+keywords: [vercel, blog]
 description: 使用 Vercel 部署个人博客过程记录，简单方便、访问快、免费部署。
 image: https://img.kuizuo.cn/image-20220511170700075.png
 ---
@@ -38,6 +38,7 @@ image: https://img.kuizuo.cn/image-20220511170700075.png
 
   [1]: https://angular.cn
   [2]: https://blitzjs.com
+
 
 
 ---
