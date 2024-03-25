@@ -11,6 +11,8 @@ description: 使用 Vercel 部署 serverless 过程记录
 
 > 前阵子升级DokuWiki结果给升级挂了，进行任何操作都会弹出一个全屏的灰色遮照。本来已经打算不管了的，结果今天HR小姐姐来找我，说之前在DokuWiki里编辑的资料还要用，但是现在打不开。这锅是甩不掉了...尝试过修改DokuWiki的源码干掉这层遮罩，但是没搞定，只能想办法把数据搞出来重新安装一次。以下是数据备份和迁移的过程：
 
+<!-- truncate -->
+
 #### 1
 
 备份Data目录下的attic,media,media_attic,media_meta,meta和pages文件夹，这些是DokuWiki里的数据文件。
