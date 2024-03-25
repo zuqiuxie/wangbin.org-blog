@@ -6,7 +6,6 @@ authors: kuizuo
 tags: [javascript, ast, reverse, project]
 keywords: [javascript, ast, reverse, project]
 ---
-
 <!-- truncate -->
 
 [JS deobfuscator](http://js-deobfuscator.kuizuo.cn/)
@@ -203,15 +202,15 @@ function printTips() {
 }
 ```
 
-比如说，我要将这个 tips 标识符更改为`_0xabcdef` ，那么肯定是需要找到这个要 tips，在 Babel 中要找到这个则可以通过遍历特部位（如函数表达式，变量声明等等）。
+比如说，我要将这个 tips 标识符更改为 `_0xabcdef` ，那么肯定是需要找到这个要 tips，在 Babel 中要找到这个则可以通过遍历特部位（如函数表达式，变量声明等等）。
 
 鼠标点击这个 tips 查看 tips 变量在树节点中的节点。
 
 ![image-20211212170832228](https://img.kuizuo.cn/image-20211212170832228.png)
 
-这边可以看到有两个蓝色标记的节点，分别是`VariableDeclaration`和`VariabelDeclarator`，翻译过来便是变量声明与变量说明符，很显然整个`let tips = [ ]` 是`VariableDeclaration`，而`tips`则是`VariabelDeclarator`。
+这边可以看到有两个蓝色标记的节点，分别是 `VariableDeclaration`和 `VariabelDeclarator`，翻译过来便是变量声明与变量说明符，很显然整个 `let tips = [ ]` 是 `VariableDeclaration`，而 `tips`则是 `VariabelDeclarator`。
 
-所以要将`tips`更改为`_0xabcdef`就需要遍历`VariabelDeclarator`并判断属性`name`是否为`tips`，大致代码如下。**（后文代码将会省略模块引入、js 代码读取、解析与生成的代码）**
+所以要将 `tips`更改为 `_0xabcdef`就需要遍历 `VariabelDeclarator`并判断属性 `name`是否为 `tips`，大致代码如下。**（后文代码将会省略模块引入、js 代码读取、解析与生成的代码）**
 
 ```javascript
 const fs = require('fs')
@@ -235,7 +234,7 @@ traverse(ast, {
 let code = generator(ast).code
 ```
 
-生成的代码如下，成功的将`tips`更改为`_0xabcdef`，并且是`tips`的所有作用域（printTips 函数下）都成功替换了。
+生成的代码如下，成功的将 `tips`更改为 `_0xabcdef`，并且是 `tips`的所有作用域（printTips 函数下）都成功替换了。
 
 ```javascript
 /**
@@ -255,17 +254,17 @@ function printTips() {
 
 简单描述下上述代码的过程
 
-1、遍历所有`VariableDeclarator`节点，也就是`tips`变量说明符（标识符）
+1、遍历所有 `VariableDeclarator`节点，也就是 `tips`变量说明符（标识符）
 
-2、获取当前遍历到的标识符的 name，也就是`path.node.id.name`，在树节点是对应的也是`id.name`
+2、获取当前遍历到的标识符的 name，也就是 `path.node.id.name`，在树节点是对应的也是 `id.name`
 
-3、判断 name 是否等于 tips，是的话，通过`path.scope.getOwnBinding(name)`，获取当前标识符（tips）的作用域，scope 的意思就是作用域，如果只是赋值操作的话如`path.node.id.name = '_0xabcdef'`，那只修改的`let tips =` 的 tips，而后面的对 tips 进行`forEach`操作的 tips 并不会更改，所以这里才需要使用`binding`来获取 tips 的作用域，并调用提供好的`rename`方法来进行更改。
+3、判断 name 是否等于 tips，是的话，通过 `path.scope.getOwnBinding(name)`，获取当前标识符（tips）的作用域，scope 的意思就是作用域，如果只是赋值操作的话如 `path.node.id.name = '_0xabcdef'`，那只修改的 `let tips =` 的 tips，而后面的对 tips 进行 `forEach`操作的 tips 并不会更改，所以这里才需要使用 `binding`来获取 tips 的作用域，并调用提供好的 `rename`方法来进行更改。
 
-4、调用`binding.scope.rename(name, '_0xabcdef')`，将旧名字 name（tips）更改为\_0xabcdef，就此整个遍历就结束，此时的 ast 已经发生了变化，所以只需要根据遍历过的 ast 生成代码便可得到修改后的代码。
+4、调用 `binding.scope.rename(name, '_0xabcdef')`，将旧名字 name（tips）更改为\_0xabcdef，就此整个遍历就结束，此时的 ast 已经发生了变化，所以只需要根据遍历过的 ast 生成代码便可得到修改后的代码。
 
-如果在仔细观察的话，其实`Identifier`（标识符）也是蓝色表示的，说明`Identifier`也同样可以遍历，甚至比上面的效果更好（后续替换所有的标识符也是遍历这个）
+如果在仔细观察的话，其实 `Identifier`（标识符）也是蓝色表示的，说明 `Identifier`也同样可以遍历，甚至比上面的效果更好（后续替换所有的标识符也是遍历这个）
 
-```javascript {3-4}
+```javascript
 traverse(ast, {
   Identifier(path) {
     let name = path.node.name
@@ -333,7 +332,7 @@ let visitor: Visitor = {
 }
 ```
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 一般来说，都是直接写到写到 traverse 内。个人推荐这种写法，因为能有 js 的代码提示，如果是 TypeScript 效果也一样。
@@ -361,7 +360,7 @@ traverse(ast, {
 })
 ```
 
-不过要遍历不同类型的代码，那么对应的 node 属性肯定大不相同，其中这里使用了 t（也就是`@babel/types`库）来进行判断 node 节点是否为该属性，来进行不同的操作，后文会提到 types。
+不过要遍历不同类型的代码，那么对应的 node 属性肯定大不相同，其中这里使用了 t（也就是 `@babel/types`库）来进行判断 node 节点是否为该属性，来进行不同的操作，后文会提到 types。
 
 上述操作将会输出 `printTips` 与 `+` 因为 printTips 函数中代码有 `Tip ${i}: + tip` ，这就是一个二项式表达式。
 
@@ -452,7 +451,7 @@ traverse(ast, {
 
 ### types
 
-该库主要的作用是判断节点类型与生成新的节点。判断节点类型上面已经演示过了，比如判断 node 节点是否是为标识符`t.isIdentifier(path.node)`，等同于`path.node.type === "Identifier"`
+该库主要的作用是判断节点类型与生成新的节点。判断节点类型上面已经演示过了，比如判断 node 节点是否是为标识符 `t.isIdentifier(path.node)`，等同于 `path.node.type === "Identifier"`
 
 判断节点类型是很重要的一个环节，有时候混淆需要针对很多节点进行操作，但并不是每个节点都有相同的属性，判断节点才不会导致获取到的节点属性出错，甚至可以写下面的代码（将输出所有函数声明与箭头函数的参数）。
 
@@ -467,11 +466,11 @@ traverse(ast, {
 
 types 的主要用途还是构造节点，或者说写一个 Builders（构建器），例如我要生成 `let a = 100` 这样的变量声明原始代码，通过 types 能轻松帮我们生成。
 
-不过先别急着敲代码，把`let a = 100`代码进行 ast 解析，看看每个代码的节点对应的 type 都是什么，这样才有助于生成该代码。
+不过先别急着敲代码，把 `let a = 100`代码进行 ast 解析，看看每个代码的节点对应的 type 都是什么，这样才有助于生成该代码。
 
 ![image-20211216131627955](https://img.kuizuo.cn/image-20211216131627955.png)
 
-body 内的第一个节点便是我们整条的代码，输入`t.variableDeclaration()`，鼠标悬停在 variableDeclaration 上，或者按 Ctrl 跳转只.d.ts 类型声明文件 查看该方法所需几个参数
+body 内的第一个节点便是我们整条的代码，输入 `t.variableDeclaration()`，鼠标悬停在 variableDeclaration 上，或者按 Ctrl 跳转只.d.ts 类型声明文件 查看该方法所需几个参数
 
 ```ts
 declare function variableDeclaration(
@@ -480,7 +479,7 @@ declare function variableDeclaration(
 ): VariableDeclaration
 ```
 
-可以看到第一个参数就是关键字，而第二个则一个数组，其中节点为`VariableDeclarator`，关于`variableDeclaration`与 `VariableDeclarator` 在前面已经提及过一次了，就不在赘述了。由于我们这里只是声明一个变量 a，所有数组成员只给一个便可，如果要生成 b，c 这些变量，就传入对应的`VariableDeclarator`即可
+可以看到第一个参数就是关键字，而第二个则一个数组，其中节点为 `VariableDeclarator`，关于 `variableDeclaration`与 `VariableDeclarator` 在前面已经提及过一次了，就不在赘述了。由于我们这里只是声明一个变量 a，所有数组成员只给一个便可，如果要生成 b，c 这些变量，就传入对应的 `VariableDeclarator`即可
 
 这时候在查看下 VariableDeclarator 方法参数
 
@@ -488,7 +487,7 @@ declare function variableDeclaration(
 declare function variableDeclarator(id: LVal, init?: Expression | null): VariableDeclarator
 ```
 
-第一个参数 id 很显然就是标识符了，不过这里的 id 不能简简单单传入一个字符串 a，而需要通过`t.identifier('a')`生成该节点，在上图中 id 就是对应`Identifier`节点。然后就是第二个参数了，一个表达式，其中这个`Expression`是 ts 中的联合类型（Union Types），可以看到有很多表达式
+第一个参数 id 很显然就是标识符了，不过这里的 id 不能简简单单传入一个字符串 a，而需要通过 `t.identifier('a')`生成该节点，在上图中 id 就是对应 `Identifier`节点。然后就是第二个参数了，一个表达式，其中这个 `Expression`是 ts 中的联合类型（Union Types），可以看到有很多表达式
 
 ```ts
 declare type Expression =
@@ -543,13 +542,13 @@ declare type Expression =
   | TSNonNullExpression
 ```
 
-其中我们所要赋值的数值 100，对应的节点类型`NumericLiteral`也在其中。在查看 numericLiteral 中的参数，就只给一个数值，那么便传入 100。
+其中我们所要赋值的数值 100，对应的节点类型 `NumericLiteral`也在其中。在查看 numericLiteral 中的参数，就只给一个数值，那么便传入 100。
 
 ```
 declare function numericLiteral(value: number): NumericLiteral;
 ```
 
-最后整个代码如下，将 t.variableDeclaration 结果赋值为一个变量`var_a`，这里的 var_a 便是一个 ast 对象，通过 generator(var_a).code 就可以获取到该 ast 的代码，也就是 `let a = 100;`，默认还会帮你添加分号
+最后整个代码如下，将 t.variableDeclaration 结果赋值为一个变量 `var_a`，这里的 var_a 便是一个 ast 对象，通过 generator(var_a).code 就可以获取到该 ast 的代码，也就是 `let a = 100;`，默认还会帮你添加分号
 
 ```javascript
 let var_a = t.variableDeclaration('let', [
@@ -590,7 +589,7 @@ let code = generator(func_b).code
 
 3、进一步的分析内层节点结构，构造出最终的原始代码。
 
-types 还有一个方法`valueToNode`，先看演示
+types 还有一个方法 `valueToNode`，先看演示
 
 ```javascript
 let arr_c = t.valueToNode([1, 2, 3, 4, 5])
@@ -608,7 +607,7 @@ console.log(arr_c)
 }
 ```
 
-如果使用`numericLiteral`来生成这些字面量的话那要写的话代码可能就要像下面这样
+如果使用 `numericLiteral`来生成这些字面量的话那要写的话代码可能就要像下面这样
 
 ```javascript
 let arr_c = t.arrayExpression([
@@ -620,7 +619,7 @@ let arr_c = t.arrayExpression([
 ])
 ```
 
-而`valueToNode`能很方便地生成各种基本类型，甚至是一些对象类型（RegExp，Object 等）。不过像函数这种就不行。
+而 `valueToNode`能很方便地生成各种基本类型，甚至是一些对象类型（RegExp，Object 等）。不过像函数这种就不行。
 
 ```javascript
 t.valueToNode(function b(x, y) {
@@ -649,17 +648,17 @@ let code = generator(arr_c).code
 
 ### Path
 
-上述讲了基本的库操作，不难发现，使用到最多的还是 traverse，并且都会传入一个参数 path，并且`path.node`使用到的频率很多，能理解请两个的区别（Node 与 NodePath），基本上你想遍历到的地方就没有遍历不到的。
+上述讲了基本的库操作，不难发现，使用到最多的还是 traverse，并且都会传入一个参数 path，并且 `path.node`使用到的频率很多，能理解请两个的区别（Node 与 NodePath），基本上你想遍历到的地方就没有遍历不到的。
 
 先说说 path 能干嘛，能停止遍历当前节点 （`path.stop`），能跳过当前节点（`path.skip`），还可以获取父级 path（`path.parentPath` ），替换当前节点（`path.replaceWith`），移除当前节点（`path.remove`）等等。
 
 #### 获取 Node 节点属性
 
-**`path.node`** 也就是当前节点所在的 Node 对象，比如`loc`、`id`、`init`，`param`、`name`等，这些都是在 node 对象下都是能直接获取到的。
+**`path.node`** 也就是当前节点所在的 Node 对象，比如 `loc`、`id`、`init`，`param`、`name`等，这些都是在 node 对象下都是能直接获取到的。
 
-不过获取到的是 node 对象，就无法使用 path 对象的方法了，如果要获取该属性的 path，就可以使用`path.get('name')`，获取到的就是 path 对象。不过对于一些特定的属性（name，operator）获取 path 对象就多此一举了。
+不过获取到的是 node 对象，就无法使用 path 对象的方法了，如果要获取该属性的 path，就可以使用 `path.get('name')`，获取到的就是 path 对象。不过对于一些特定的属性（name，operator）获取 path 对象就多此一举了。
 
-一共有两种类型 `Node` 与 `NodePath`，记住有`Path`则是`path`，如`path`就属于`NodePath`，而`path.node` 属于`Node`。
+一共有两种类型 `Node` 与 `NodePath`，记住有 `Path`则是 `path`，如 `path`就属于 `NodePath`，而 `path.node` 属于 `Node`。
 
 ![image-20211213021420326](https://img.kuizuo.cn/image-20211213021420326.png)
 
@@ -716,11 +715,11 @@ traverse(ast, {
 })
 ```
 
-要注意的是，替换节点要非常谨慎，就比如上述代码，如果我遍历 return 语句，同时我又替换成了 return 语句，替换后的节点同样是可以进入到遍历里，如果不进行停止，将会造成死循环，所以这里才使用了`path.stop`完全停止当前遍历，直到下一条 return 语句。
+要注意的是，替换节点要非常谨慎，就比如上述代码，如果我遍历 return 语句，同时我又替换成了 return 语句，替换后的节点同样是可以进入到遍历里，如果不进行停止，将会造成死循环，所以这里才使用了 `path.stop`完全停止当前遍历，直到下一条 return 语句。
 
 `path.skip()`跳过遍历当前路径的子路径。`path.stop()`完全停止当前遍历
 
-`relaceInline` 接收一个参数，如果不为数组相当于`replaceWith`，如果是数组相当于`replaceWithMultiple`
+`relaceInline` 接收一个参数，如果不为数组相当于 `replaceWith`，如果是数组相当于 `replaceWithMultiple`
 
 `replaceWithSoureString` 该方式将字符串源码与节点进行替换，例如
 
@@ -759,7 +758,7 @@ traverse(ast, {
 
 #### 插入节点
 
-`insertBefore`与`insertAfter`分别在当前节点前后插入语句
+`insertBefore`与 `insertAfter`分别在当前节点前后插入语句
 
 ```javascript
 traverse(ast, {
@@ -904,7 +903,7 @@ Node {
 
 `path.getSibling(index)` 获取当前节点所在容器中索引对应的同级节点，index 可通过 path.key 获取。
 
-其中还有`unshiftContainer`与`pushContainer`，在容器前与后添加节点，与`Array.unshift`和`Array.push`方法类似，不过基本没怎么用过，便不做实例了。
+其中还有 `unshiftContainer`与 `pushContainer`，在容器前与后添加节点，与 `Array.unshift`和 `Array.push`方法类似，不过基本没怎么用过，便不做实例了。
 
 ### Scope
 
@@ -959,7 +958,7 @@ traverse(ast, {
 // }
 ```
 
-由于`scope.block`返回的是 Node 对象，将就无法使用 path.toString()转为原始代码了。
+由于 `scope.block`返回的是 Node 对象，将就无法使用 path.toString()转为原始代码了。
 
 #### binding
 
@@ -1075,13 +1074,13 @@ function _0xabcdef2() {
 
 ## 混淆实战
 
-关于混淆实战的代码都已贴到 Github[kuizuo/AST-obfuscator](https://github.com/kuizuo/AST-obfuscator)，在`src/obfuscated`中便可看到完整的混淆程序。其中也包括一些实战还原的例子，大部分的写法都采用了 ES6 的类来写，方便编写理解。
+关于混淆实战的代码都已贴到 Github[kuizuo/AST-obfuscator](https://github.com/kuizuo/AST-obfuscator)，在 `src/obfuscated`中便可看到完整的混淆程序。其中也包括一些实战还原的例子，大部分的写法都采用了 ES6 的类来写，方便编写理解。
 
 大部分混淆的例子在这本书《反爬虫 AST 原理与还原混淆实战》中都有，例如常量混淆，数组混淆与乱序，标识符混淆等等就不细说了，上传的代码中有，不过书中有一些 es6 的代码是没提及到的。
 
 ### 模板字符串
 
-与`StringLiteral`不同，模板字符串的 type 是`TemplateLiteral`，所以是遍历不到模板字符串的。下文将用代码来实现将模板字符串转为字符串拼接
+与 `StringLiteral`不同，模板字符串的 type 是 `TemplateLiteral`，所以是遍历不到模板字符串的。下文将用代码来实现将模板字符串转为字符串拼接
 
 演示代码
 
@@ -1094,7 +1093,7 @@ let a = 'kuizuo'
 
 ![image-20211217161958075](https://img.kuizuo.cn/image-20211217161958075.png)
 
-不难观察出，parser 将其成两部分`expressions`与`quasis`。而所要转为的最终代码应该是`'' + a + 'nb' + 12 + '3' + '456'+ ''`，并且`quasis`成员个数始终比`expressions`多一位，所以只需要将`expressions`插入置`quasis`成员内，然后通过 binaryExpression 进行拼接即可。大致的思路有了，那么就开始用代码来进行拼接。
+不难观察出，parser 将其成两部分 `expressions`与 `quasis`。而所要转为的最终代码应该是 `'' + a + 'nb' + 12 + '3' + '456'+ ''`，并且 `quasis`成员个数始终比 `expressions`多一位，所以只需要将 `expressions`插入置 `quasis`成员内，然后通过 binaryExpression 进行拼接即可。大致的思路有了，那么就开始用代码来进行拼接。
 
 ```javascript
 traverse(ast, {
@@ -1153,7 +1152,7 @@ console.log(test.run())
 
 复制上述代码，观察 AST 树结构（图就不放了）
 
-不难发现，其实就是 type `ClassDeclaration`、`ClassProperty`、`ClassMethod`，通过标识符混淆的方法`renameIdentifier`，将`Program|FunctionExpression|FunctionDeclaration`新增这两个 type 即可
+不难发现，其实就是 type `ClassDeclaration`、`ClassProperty`、`ClassMethod`，通过标识符混淆的方法 `renameIdentifier`，将 `Program|FunctionExpression|FunctionDeclaration`新增这两个 type 即可
 
 ```javascript
 traverse(ast, {
@@ -1196,7 +1195,7 @@ class Test {
 }
 ```
 
-所以将`run()` 转为`[‘run’]()`便成为了关键。而实现起来也相对简单（与改变对象访问方式一样）
+所以将 `run()` 转为 `[‘run’]()`便成为了关键。而实现起来也相对简单（与改变对象访问方式一样）
 
 ```javascript
 traverse(ast, {
@@ -1211,7 +1210,7 @@ traverse(ast, {
 })
 ```
 
-最终运行混淆程序，执行混淆后的代码，成功输出`kuizuo20`
+最终运行混淆程序，执行混淆后的代码，成功输出 `kuizuo20`
 
 ---
 
@@ -1221,7 +1220,7 @@ traverse(ast, {
 
 ### 混淆前提
 
-**不改变原有代码的执行过程与结果**，并不是随便混淆都行了，比如`let c = a + b` ，总不能混淆成 `let OO = Oo - oO`吧。其次要懂得利用 js 语法的特性来进行混淆，比如高阶函数，函数传参，jsfuck 等等。
+**不改变原有代码的执行过程与结果**，并不是随便混淆都行了，比如 `let c = a + b` ，总不能混淆成 `let OO = Oo - oO`吧。其次要懂得利用 js 语法的特性来进行混淆，比如高阶函数，函数传参，jsfuck 等等。
 
 ### 混淆并非万能
 
@@ -1233,7 +1232,7 @@ traverse(ast, {
 
 ### 有混淆就有还原
 
-既然混淆是通过 AST 来进行混淆的，那么还原也同样可以，不过还原就不可能还原出原始开发者所编写的，就如同一些打包工具打包后的代码，比如将 name 压缩成 n，age 压缩成 a，那么就无法推断出 n 为 name，a 为 age，而混淆也是同理，像代码`let OOOOOO = atob('a3VpenVv')`，能还原的也只能是`let OOOOOO = ‘kuizuo’`或者是将标识符重新命名`let _0x123456 = ‘kuizuo’`，相对好看些。大部分的还原工作都只是将代码变得好读一些，比如`atob('a3VpenVv')`就可以变为`‘kuizuo’`，这便是基本的还原之一，关于还原还会另出一篇文章来记录，就不在这多废笔舌了。
+既然混淆是通过 AST 来进行混淆的，那么还原也同样可以，不过还原就不可能还原出原始开发者所编写的，就如同一些打包工具打包后的代码，比如将 name 压缩成 n，age 压缩成 a，那么就无法推断出 n 为 name，a 为 age，而混淆也是同理，像代码 `let OOOOOO = atob('a3VpenVv')`，能还原的也只能是 `let OOOOOO = ‘kuizuo’`或者是将标识符重新命名 `let _0x123456 = ‘kuizuo’`，相对好看些。大部分的还原工作都只是将代码变得好读一些，比如 `atob('a3VpenVv')`就可以变为 `‘kuizuo’`，这便是基本的还原之一，关于还原还会另出一篇文章来记录，就不在这多废笔舌了。
 
 整个混淆的过程来看，无非就是多了门技能，对 js 有了更进一步的了解，略懂 js 编译过程中的语法分析，此外也感叹 Babel 提供如此强大的 api。同时也能尝试使用最新的 ECMAScript 语法特性，无需考虑兼容问题，babel 统统都能处理。就如同 babel 官网所说的：
 
