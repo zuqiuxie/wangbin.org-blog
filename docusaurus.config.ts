@@ -57,6 +57,11 @@ const config: Config = {
           to: 'blog',
         },
         {
+          label: '归档',
+          position: 'right',
+          to: 'blog/archive',
+        },
+        {
           label: '项目',
           position: 'right',
           to: 'project',
@@ -65,7 +70,6 @@ const config: Config = {
           label: '更多',
           position: 'right',
           items: [
-            { label: '归档', to: 'blog/archive' },
             { label: '笔记', to: 'docs/skill' },
             { label: '资源', to: 'resources' },
             { label: '友链', to: 'friends' },
