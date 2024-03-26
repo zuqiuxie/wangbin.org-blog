@@ -2,7 +2,7 @@
 slug: vercel-deploy-blog
 title: Vercel所支持的42种前端框架
 date: 2023-10-11
-authors: binshao
+authors: kuizuo
 tags: [vercel]
 keywords: [vercel]
 description: 使用 Vercel 部署个人博客过程记录，简单方便、访问快、免费部署。
