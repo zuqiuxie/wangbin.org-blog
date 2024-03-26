@@ -10,12 +10,12 @@ import { motion } from 'framer-motion'
 
 const TITLE = '友链'
 const DESCRIPTION = '有很多良友，胜于有很多财富。'
-const ADD_FRIEND_URL = 'https://github.com/kuizuo/blog/edit/main/data/friends.tsx'
+const ADD_FRIEND_URL = 'https://github.com/zuqiuxie/wangbin.org-blog/edit/main/data/friends.tsx'
 const SITE_INFO = `
-title: '愧怍'
-description: '道阻且长，行则将至'
-website: 'https://kuizuo.cn'
-avatar: 'https://kuizuo.cn/img/logo.png'
+title: '彬少'
+description: '认真学习，天天搞钱'
+website: 'https://wangbin.org'
+avatar: 'https://wangbin.org/img/logo.png'
 `
 
 function SiteInfo() {
