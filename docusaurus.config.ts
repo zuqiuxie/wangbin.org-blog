@@ -8,11 +8,11 @@ const beian = '闽ICP备2020017848号-2'
 const beian1 = '闽公网安备35021102000847号'
 
 const config: Config = {
-  title: '愧怍的小站',
-  url: 'https://kuizuo.cn',
+  title: '彬少的小站',
+  url: 'http://wangbin.org',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'kuizuo',
+  organizationName: 'binshao',
   projectName: 'blog',
   customFields: {
     bio: '道阻且长，行则将至',
