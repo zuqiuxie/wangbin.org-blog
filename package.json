@@ -7,10 +7,10 @@
     "name": "binshao"
   },
   "repository": {
-    "url": "https://github.com/kuizuo/blog",
+    "url": "https://github.com/zuqiuxie/wangbin.org-blog",
     "type": "git"
   },
-  "homepage": "https://kuizuo.cn",
+  "homepage": "https://wangbin.org",
   "license": "MIT",
   "scripts": {
     "docusaurus": "docusaurus",
