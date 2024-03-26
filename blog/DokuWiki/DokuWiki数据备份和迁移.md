@@ -2,7 +2,7 @@
 slug: vercel-deploy-serverless
 title: DokuWiki数据备份和迁移
 date: 2023-12-12
-authors: kuizuo
+authors: binshao
 tags: [DokuWiki]
 keywords: [DokuWiki]
 description: 使用 Vercel 部署 serverless 过程记录
