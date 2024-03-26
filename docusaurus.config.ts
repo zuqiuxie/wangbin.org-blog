@@ -45,7 +45,7 @@ const config: Config = {
     },
     navbar: {
       logo: {
-        alt: '愧怍',
+        alt: '彬少',
         src: 'img/logo.webp',
         srcDark: 'img/logo.webp',
       },
@@ -60,6 +60,11 @@ const config: Config = {
           label: '归档',
           position: 'right',
           to: 'blog/archive',
+        },
+        {
+          label: '标签',
+          position: 'right',
+          to: 'blog/tags',
         },
         {
           label: '项目',
