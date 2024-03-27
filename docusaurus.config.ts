@@ -82,6 +82,11 @@ const config: Config = {
           ],
         },
         {
+          label: 'run彬',
+          position: 'right',
+          to: 'http://run.wangbin.org',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },
