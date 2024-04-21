@@ -1,7 +1,7 @@
 ---
-slug: paobu-bisai-2017lining-20170115
+slug: running-page-peizhi
 title: running_page配置教程，跑步数据汇集展示。
-date: 2017-01-15
+date: 2024-04-21
 authors: kuizuo
 tags: [running_page]
 keywords: [running_page]
