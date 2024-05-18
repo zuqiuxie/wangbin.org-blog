@@ -10,8 +10,6 @@ keywords: [说明书]
 
 <!-- truncate -->
 
-![少华山](https://tp.wangbin.run/photo/2023-10-14/1.jpg)
-
-![少华山](https://tp.wangbin.run/photo/2023-10-14/2.jpg)
+![cubi时间管理-说明书1](https://tp.wangbin.run/photo/shuomingshu/2024-04/cubi%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86-%E8%AF%B4%E6%98%8E%E4%B9%A61.png)
 
 ---
