@@ -4,8 +4,8 @@ import { themes } from 'prism-react-renderer'
 import { GiscusConfig } from './src/components/Comment'
 import social from './data/social'
 
-const beian = '闽ICP备2020017848号-2'
-const beian1 = '闽公网安备35021102000847号'
+const beian = '闽ICP备'
+const beian1 = '闽公网安备'
 
 const config: Config = {
   title: '彬少的小站',
@@ -84,7 +84,7 @@ const config: Config = {
         {
           label: 'run彬',
           position: 'right',
-          to: 'http://run.wangbin.org',
+          to: 'http://42195.wangbin.run',
         },
         {
           type: 'localeDropdown',
