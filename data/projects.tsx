@@ -22,8 +22,8 @@ export const projects: Project[] = [
   {
     title: '历史wiki',
     description: '🦖 基于 vue 网站生成器实现的',
-    preview: '/img/project/web-nav.png',
-    website: 'https://book.wangbin.run',
+    preview: '/img/project/history.png',
+    website: 'https://history.wangbin.run',
     source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
     type: 'love',
