@@ -8,6 +8,24 @@ export const projects: Project[] = [
     tags: ['opensource', 'design', 'favorite'],
     type: 'nav',
   },
+  {
+    title: 'av导航',
+    description: '🦖 基于 html 静态网站生成器实现导航',
+    preview: '/img/project/web-nav.png',
+    website: 'https://av-nav.wangbin.org',
+    source: 'https://github.com/zuqiuxie',
+    tags: ['opensource', 'design', 'favorite'],
+    type: 'nav',
+  },
+  {
+    title: 'running彬',
+    description: '🦖 基于 Vercel 自动部署，打造个人跑步主页。支持 Keep、佳明、佳明中国、Nike、悦跑圈、咕咚 及 Strava 等数据同步',
+    preview: '/img/project/running.png',
+    website: 'https://42195.wangbin.run',
+    source: 'https://github.com/zuqiuxie',
+    tags: ['opensource', 'design', 'favorite'],
+    type: 'nav',
+  },
   // book
   {
     title: '读过的书&读书笔记',
