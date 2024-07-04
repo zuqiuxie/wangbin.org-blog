@@ -27,7 +27,7 @@ const config: Config = {
     metadata: [
       {
         name: 'keywords',
-        content: '愧怍, kuizuo',
+        content: '彬少, binshao',
       },
       {
         name: 'keywords',

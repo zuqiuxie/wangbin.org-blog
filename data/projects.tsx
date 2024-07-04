@@ -10,7 +10,7 @@ export const projects: Project[] = [
   },
   // book
   {
-    title: '读过的书&读书笔记,
+    title: '读过的书&读书笔记',
     description: '🦖 基于 html 静态网站生成器实现的读书笔记',
     preview: '/img/project/web-nav.png',
     website: 'https://book.wangbin.run',
