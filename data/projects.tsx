@@ -26,7 +26,7 @@ export const projects: Project[] = [
     tags: ['opensource', 'design', 'favorite'],
     type: 'nav',
   },
-  // book-wiki
+  // bookwiki
   {
     title: '读过的书&读书笔记',
     description: '🦖 基于 html 静态网站生成器实现的读书笔记',
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     website: 'https://book.wangbin.run',
     source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
-    type: 'book-wiki',
+    type: 'bookwiki',
   },
   {
     title: '印象笔记',
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     website: 'https://yxbj.wangbin.run',
     source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
-    type: 'book-wiki',
+    type: 'bookwiki',
   },
   {
     title: '医学微视',
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     website: 'https://yxws2.wangbin.run',
     source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
-    type: 'book-wiki',
+    type: 'bookwiki',
   },
   // love
   {
@@ -75,6 +75,7 @@ export const projects: Project[] = [
     type: 'web',
   },
 
+]
 
 export type Tag = {
   label: string
@@ -88,7 +89,7 @@ export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'oth
 
 export const projectTypeMap = {
   nav: '导航',
-  book-wiki: '读书&知识库',
+  bookwiki: '读书&知识库',
   love: '爱好',
   web: '网站',
 }
