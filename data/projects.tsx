@@ -26,7 +26,7 @@ export const projects: Project[] = [
     tags: ['opensource', 'design', 'favorite'],
     type: 'nav',
   },
-  // book
+  // book-wiki
   {
     title: '读过的书&读书笔记',
     description: '🦖 基于 html 静态网站生成器实现的读书笔记',
@@ -34,7 +34,25 @@ export const projects: Project[] = [
     website: 'https://book.wangbin.run',
     source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
-    type: 'book',
+    type: 'book-wiki',
+  },
+  {
+    title: '印象笔记',
+    description: '🦖 基于 vue 网站生成器实现的',
+    preview: '/img/project/yxbj.png',
+    website: 'https://yxbj.wangbin.run',
+    source: 'https://github.com/zuqiuxie',
+    tags: ['opensource', 'design', 'favorite'],
+    type: 'book-wiki',
+  },
+  {
+    title: '医学微视',
+    description: '🦖 基于 vue 网站生成器实现的',
+    preview: '/img/project/yxws.png',
+    website: 'https://yxws2.wangbin.run',
+    source: 'https://github.com/zuqiuxie',
+    tags: ['opensource', 'design', 'favorite'],
+    type: 'book-wiki',
   },
   // love
   {
@@ -48,10 +66,10 @@ export const projects: Project[] = [
   },
   // web
   {
-    title: 'JS代码反混淆',
-    description: '基于 Babel 对 JavaScript 混淆代码还原的工具',
-    preview: '/img/project/js-deobfuscator.png',
-    website: 'https://js-deobfuscator.vercel.app',
+    title: 'Look Scanned',
+    description: 'Look Scanned 是一个能够让 PDF 看起来就像是扫描件一样的纯前端网站。你再也不需要麻烦地打印之后扫描了，你所需要的就是鼠标点几下。',
+    preview: '/img/project/lookscanned.png',
+    website: 'https://lookscanned.wangbin.run/',
     source: 'https://github.com/kuizuo/js-deobfuscator',
     tags: ['opensource', 'favorite'],
     type: 'web',
@@ -222,7 +240,7 @@ export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'oth
 
 export const projectTypeMap = {
   nav: '导航',
-  book: '读书',
+  book-wiki: '读书&知识库',
   love: '爱好',
   web: '网站',
   app: '应用',
