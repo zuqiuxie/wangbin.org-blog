@@ -12,11 +12,21 @@ export const projects: Project[] = [
   {
     title: '读过的书&读书笔记',
     description: '🦖 基于 html 静态网站生成器实现的读书笔记',
-    preview: '/img/project/web-nav.png',
+    preview: '/img/project/book.png',
     website: 'https://book.wangbin.run',
     source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
     type: 'book',
+  },
+  // love
+  {
+    title: '历史wiki',
+    description: '🦖 基于 vue 网站生成器实现的',
+    preview: '/img/project/web-nav.png',
+    website: 'https://book.wangbin.run',
+    source: 'https://github.com/zuqiuxie',
+    tags: ['opensource', 'design', 'favorite'],
+    type: 'love',
   },
   // web
   {
@@ -195,6 +205,7 @@ export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'oth
 export const projectTypeMap = {
   nav: '导航',
   book: '读书',
+  love: '爱好',
   web: '网站',
   app: '应用',
   commerce: '商业项目',
