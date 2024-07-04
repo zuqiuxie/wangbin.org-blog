@@ -8,6 +8,7 @@ export const projects: Project[] = [
     tags: ['opensource', 'design', 'favorite'],
     type: 'nav',
   },
+  // web
   {
     title: '愧怍的小站',
     description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
