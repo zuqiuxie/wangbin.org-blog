@@ -74,7 +74,7 @@ export const projects: Project[] = [
     tags: ['opensource', 'favorite'],
     type: 'web',
   },
-]
+
 
 export type Tag = {
   label: string
