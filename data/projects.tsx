@@ -1,5 +1,14 @@
 export const projects: Project[] = [
   {
+    title: '全导航',
+    description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
+    preview: '/img/project/blog.png',
+    website: 'https://web.wangbin.run',
+    source: 'https://github.com/kuizuo/blog',
+    tags: ['opensource', 'design', 'favorite'],
+    type: 'nav',
+  },
+  {
     title: '愧怍的小站',
     description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
     preview: '/img/project/blog.png',
@@ -182,6 +191,7 @@ export type TagType = 'favorite' | 'opensource' | 'product' | 'design' | 'large'
 export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'other'
 
 export const projectTypeMap = {
+  nav: '导航'
   web: '网站',
   app: '应用',
   commerce: '商业项目',
