@@ -8,16 +8,17 @@ export const projects: Project[] = [
     tags: ['opensource', 'design', 'favorite'],
     type: 'nav',
   },
-  // web
+  // book
   {
-    title: '愧怍的小站',
-    description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
-    preview: '/img/project/blog.png',
-    website: 'https://kuizuo.cn',
-    source: 'https://github.com/kuizuo/blog',
+    title: '读过的书&读书笔记,
+    description: '🦖 基于 html 静态网站生成器实现的读书笔记',
+    preview: '/img/project/web-nav.png',
+    website: 'https://book.wangbin.run',
+    source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
-    type: 'web',
+    type: 'book',
   },
+  // web
   {
     title: 'JS代码反混淆',
     description: '基于 Babel 对 JavaScript 混淆代码还原的工具',
@@ -193,6 +194,7 @@ export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'oth
 
 export const projectTypeMap = {
   nav: '导航',
+  book: '读书',
   web: '网站',
   app: '应用',
   commerce: '商业项目',
