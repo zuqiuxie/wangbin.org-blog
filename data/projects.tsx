@@ -11,7 +11,7 @@ export const projects: Project[] = [
   {
     title: 'av导航',
     description: '🦖 基于 html 静态网站生成器实现导航',
-    preview: '/img/project/av-nav',
+    preview: '/img/project/av-nav.png',
     website: 'https://av-nav.wangbin.org',
     source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
