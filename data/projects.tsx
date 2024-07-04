@@ -1,10 +1,10 @@
 export const projects: Project[] = [
   {
     title: '全导航',
-    description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
-    preview: '/img/project/blog.png',
+    description: '🦖 基于 html 静态网站生成器实现导航',
+    preview: '/img/project/web-nav.png',
     website: 'https://web.wangbin.run',
-    source: 'https://github.com/kuizuo/blog',
+    source: 'https://github.com/zuqiuxie',
     tags: ['opensource', 'design', 'favorite'],
     type: 'nav',
   },
